@@ -18,14 +18,14 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password']))
         $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$enc_password')";
         if(mysqli_query($conn, $sql)){
             $_SESSION['success'] = 'New user successfully added';
-            header('Location: ./../index.php');
+            header('Location: ./index.php');
         }else{
             $_SESSION['error'] = 'Something went wrong';
-            header('Location: ./');
+            header('Location: ./create.php');
         }
     }else{
         $_SESSION['error'] = 'The password does not match';
-        header('Location: ./');
+        header('Location: ./create.php');
     }
 }
 ?>

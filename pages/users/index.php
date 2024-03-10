@@ -34,8 +34,12 @@ $conn = db_connect();
                     <td><?= $user['name']; ?></td>
                     <td><?= $user['email']; ?></td>
                     <td>
-                        <button class="btn">Edit</button>
+                        <a href="update.php?id=<?php echo $user['id']; ?>">
+                            <button class="btn">Edit</button>
+                        </a>
+                        <a href="delete.php?id=<?php echo $user['id']; ?>" onclick="confirm('Are you sure?')">
                         <button class="btn">Delete</button>
+                        </a>
                     </td>
                 </tr>
             <?php

@@ -10,3 +10,13 @@ function getUsersList()
     mysqli_close($conn);
     return $users;
 }
+
+function getUserDetail() {
+    global $conn;
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM users WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $user;
+}
