@@ -14,7 +14,9 @@ $conn = db_connect();
 
 <section>
     <div class="container">
-        <button class="add-button">+ Add User</button>
+        <a href="./create.php">
+            <button class="add-button">+ Add User</button>
+        </a>
         <table>
             <tr>
                 <th>S.N</th>
