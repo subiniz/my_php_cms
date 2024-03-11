@@ -13,6 +13,16 @@ $conn = db_connect();
 <?php include '../../include/menu.php'; ?>
 
 <section>
+    <?php
+    if (isset($_SESSION['error'])) {
+        echo "<span class='error-text auth-err'>" . $_SESSION['error'] . "</span>";
+        unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['success'])) {
+        echo "<span class='success-text auth-err'>" . $_SESSION['success'] . "</span>";
+        unset($_SESSION['success']);
+    }
+    ?>
     <div class="container">
         <a href="./create.php">
             <button class="add-button">+ Add User</button>
@@ -37,7 +47,7 @@ $conn = db_connect();
                         <a href="update.php?id=<?php echo $user['id']; ?>">
                             <button class="btn">Edit</button>
                         </a>
-                        <a href="delete.php?id=<?php echo $user['id']; ?>" onclick="confirm('Are you sure?')">
+                        <a href="delete.php?id=<?php echo $user['id']; ?>"> <!-- onclick="confirm('Are you sure?')" -->
                         <button class="btn">Delete</button>
                         </a>
                     </td>
