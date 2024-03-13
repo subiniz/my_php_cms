@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "SELECT * FROM users WHERE email = ? AND password = ?";
     $stmt = mysqli_prepare($conn, $sql);
 
-    //Bind parameters sto the statement
+    //Bind parameters to the statement
     mysqli_stmt_bind_param($stmt, "ss", $email, $enc_password);
 
     mysqli_stmt_execute($stmt);
@@ -20,6 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_stmt_store_result($stmt);
 
     if(mysqli_stmt_num_rows($stmt) > 0){
+        $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_assoc($result);
         $_SESSION['email'] = $row['email'];
         $_SESSION['id'] = $row['id'];
@@ -32,7 +33,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         // die();
         header('Location: ./login.php');
     }
-    mysqli_stmt_close($stmt);
     mysqli_close($conn);
 }
 
